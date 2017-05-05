@@ -1,0 +1,79 @@
+.clearfix {
+	float: none;
+	clear:both;
+	text-decoration: none;
+	list-style: none;
+}
+
+body {
+	font-family: Helvetica,Arial;
+
+}
+
+#content {
+	width:80%;
+	min-height: 500px;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0px 0px 5px #eee;
+}
+
+header #logo {
+	width: 50px;
+	display: block;
+	float: left;
+}
+
+header h1 {
+	padding-left: 10px;
+	line-height: 50px;
+	border-top: 1px solid red;
+	border-bottom: 1px solid red;
+	color: red;
+}
+
+h2 {
+	padding-left: 10px;
+	color: red;
+}
+
+.restaurante-item .data {
+	list-style-type: none;
+	text-decoration: none;
+	margin-left: 120px;
+}
+
+
+.restaurante-item #image {
+	width: 100px;
+	height: 100px;
+	overflow: none;
+	background: #ccc;
+	float: left;
+	text-decoration: none;
+	list-style-type: none;
+}
+
+.btn {
+	border: 1px solid #1965A2;
+	box-shadow: 0px 0px 5px #ddd;
+	border-radius: 3px;
+	font-size: 13px;
+	width: 250px;
+	padding: 5px;
+	color:white;
+	text-decoration: none;
+	background: #0074d9;
+}
+.btn-ver {
+	margin-left: 120px;
+}
+
+.btn-editar {
+	background: green;
+}
+
+.btn-eliminar {
+	background: red;
+}

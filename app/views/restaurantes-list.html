@@ -1,0 +1,22 @@
+<h2>{{titulo}}</h2>
+<hr>
+<div class="loading">
+	<img src="../../assets/img/loading.gif" *ngIf="loading=='show'">
+</div>
+<ul>
+	<li *ngFor="#restaurante of restaurantes" class="restaurante-item">
+		<div id="image"></div>
+		<div class="data">
+			<p>{{restaurante.nombre}}</p>
+			<p>{{restaurante.direccion}}</p>
+			<p>{{restaurante.precio}}</p>
+		</div>
+		<p>
+			<a [routerLink]="['Restaurante',{id: restaurante.id}]" id="" class="btn btn-ver">Ver</a>
+			<a id="" class="btn btn-editar" href="">Editar</a>
+			<a id="" class="btn btn-eliminar" href="">Eliminar</a>
+		</p>
+		<hr>
+	</li>
+</ul>
+<div class="clearfix"></div>
