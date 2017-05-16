@@ -3,7 +3,15 @@
 	<img src="../../assets/img/angular.png" id="logo">
 	<h1>{{titulo}}</h1>	
 </header>
+<nav>
+	<ul>
+		<li><a [routerLink]="['Home']">Inicio</a></li>
+		<li><a [routerLink]="['CrearRestaurante']">Crear Restaurante</a></li>
+		<li><a [routerLink]="['Home']">Sugerencia</a></li>
+	</ul>
+</nav>
 <section class="main">
 	<router-outlet></router-outlet>
+	<div><a [routerLink]="['Home']">Volver al listado</a></div>
 	<div class="clearfix"></div>
 </section>

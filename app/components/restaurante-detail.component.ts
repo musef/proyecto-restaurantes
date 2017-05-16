@@ -1,7 +1,8 @@
 import {Component, OnInit} from "angular2/core";
 import {RestaurantesService} from "../services/restaurantes.service";
 import {Restaurante} from "../models/Restaurante";
-import {RouteParams} from "angular2/router";
+import {RouteParams, Router} from "angular2/router";
+
 
 @Component({
 	selector:"restaurante-detail",
@@ -19,7 +20,8 @@ export class RestauranteDetailComponent implements OnInit {
 
 	constructor(
 		private _restauranteService:RestaurantesService,
-		private _routeParams:RouteParams
+		private _routeParams:RouteParams,
+		private _route: Router
 		) {
 
 	}
@@ -41,7 +43,8 @@ export class RestauranteDetailComponent implements OnInit {
 				this.restaurante=response.data;
 				this.status=response.status;
 				if (this.status !=="success") {
-					alert ("Error en el servidor");
+					//alert ("Error en el servidor");
+					this._route.navigate(["Home"]);
 				} 
 			},
 			error=>{
@@ -49,6 +52,8 @@ export class RestauranteDetailComponent implements OnInit {
 				if (this.errorMessage !== null) {
 					console.log(this.errorMessage);
 					alert("Error en la peticion");
+
+
 				}
 			}
 		);
