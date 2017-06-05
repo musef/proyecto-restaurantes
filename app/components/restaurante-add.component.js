@@ -32,15 +32,34 @@ System.register(["angular2/core", "../services/restaurantes.service", "../models
                     this._restauranteService = _restauranteService;
                     this._routeParams = _routeParams;
                     this._route = _route;
+                    this.title = "Nuevo restaurante cargado";
                 }
+                RestauranteAddComponent.prototype.onSubmit = function () {
+                    var _this = this;
+                    this._restauranteService.addRestaurante(this.restaurante).subscribe(function (response) {
+                        _this.status = status;
+                        if (_this.status !== 'success')
+                            alert('Exito al añadir restaurante');
+                    }, function (error) {
+                        _this.errorMessage = error;
+                        if (_this.errorMessage !== null) {
+                            console.log(_this.errorMessage);
+                            alert("Error en la peticion");
+                        }
+                    });
+                    this._route.navigate(['Home']);
+                };
                 RestauranteAddComponent.prototype.ngOnInit = function () {
                     //this.idRestaurante=this._routeParams.get("id");
                     this.restaurante = new Restaurante_1.Restaurante(0, '', '', '', 'null', 'bajo');
                     console.log("Restaurante ADD cargado");
                 };
+                RestauranteAddComponent.prototype.settingPrice = function (price) {
+                    this.restaurante.precio = price;
+                };
                 RestauranteAddComponent = __decorate([
                     core_1.Component({
-                        selector: "restaurante-detail",
+                        selector: "restaurante-add",
                         templateUrl: "app/views/restaurante-add.html",
                         providers: [restaurantes_service_1.RestaurantesService]
                     }), 

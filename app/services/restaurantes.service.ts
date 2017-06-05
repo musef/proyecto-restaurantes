@@ -1,5 +1,5 @@
 import {Injectable} from "angular2/core";
-import {Http,Response} from "angular2/http";
+import {Http,Response,Headers} from "angular2/http";
 
 import "rxjs/add/operator/map";
 import {Observable} from "rxjs/Observable";
@@ -22,4 +22,23 @@ export class RestaurantesService {
 		return this._http.get("http://localhost/restaurantes-api/api-rest/restaurantes-api.php/restaurante/"+$id)
 			.map(res => res.json());
 	}
+
+	addRestaurante (restaurante:Restaurante) {
+		let json=JSON.stringify(restaurante);
+		let params="json="+json;
+		let header=new Headers({"Content-Type":"application/x-www-form-urlencoded"});
+
+		return this._http.post("http://localhost/restaurantes-api/api-rest/restaurantes-api.php/restaurantes",
+			params,{headers:header}).map(res=>res.json());
+	}
+
+	editRestaurante (id:String, restaurante:Restaurante) {
+		let json=JSON.stringify(restaurante);
+		let params="json="+json;
+		let header=new Headers({"Content-Type":"application/x-www-form-urlencoded"});
+
+		return this._http.post("http://localhost/restaurantes-api/api-rest/restaurantes-api.php/update-restaurante/"+id,
+			params,{headers:header}).map(res=>res.json());
+	}
+
 }

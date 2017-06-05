@@ -1,28 +1,31 @@
-<h1>Nuevo restaurante cargado</h1>
+<h1>{{title}}</h1>
 
 <form #addFormRestaurante="ngForm" (ngSubmit)="onSubmit()">
 <p>
 	<label>Nombre</label>
-	<input type="text" #nombre="ngForm" ngControl="nombre" [(ngModel)]="restaurante.nombre">
+	<input type="text" #nombre="ngForm" ngControl="nombre" [(ngModel)]="restaurante.nombre" required>
+	<span *ngIf="!nombre.valid">El nombre es obligatorio</span>
 </p>
 <p>
 	<label>Direccion</label>
-	<input type="text" #direccion="ngForm" ngControl="direccion" [(ngModel)]="restaurante.direccion">
+	<input type="text" #direccion="ngForm" ngControl="direccion" [(ngModel)]="restaurante.direccion" required>
+	<span *ngIf="!direccion.valid">La direccion es obligatoria</span>
 </p>
 <p>
 	<label>Descripcion</label>
-	<textarea #descripcion="ngForm" ngControl="descripcion" [(ngModel)]="restaurante.descripcion"></textarea> 
+	<textarea #descripcion="ngForm" ngControl="descripcion" [(ngModel)]="restaurante.descripcion" required></textarea> 
+	<span *ngIf="!descripcion.valid">La descripcion es obligatoria</span>
 </p>
 <p>
-	<select #precio>
-		<option value="Barato">Barato</option>
-		<option value="Medio">Medio</option>
-		<option value="Alto">Alto</option>
+	<select (change)="settingPrice(precio.value)" #precio>
+		<option value="Barato" [attr.selected]="restaurante.precio==='barato' ? 'selected' : null">Barato</option>
+		<option value="Medio" [attr.selected]="restaurante.precio==='medio' ? 'selected' : null">Medio</option>
+		<option value="Alto" [attr.selected]="restaurante.precio==='alto' ? 'selected' : null">Alto</option>
 	</select>
 </p>
 
 <p>
-	<input type="submit" value="Crear Restaurante">
+	<input type="submit" value="Crear Restaurante" [disabled]="!addFormRestaurante.form.valid">
 </p>
 
 </form>

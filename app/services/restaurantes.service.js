@@ -34,6 +34,18 @@ System.register(["angular2/core", "angular2/http", "rxjs/add/operator/map"], fun
                     return this._http.get("http://localhost/restaurantes-api/api-rest/restaurantes-api.php/restaurante/" + $id)
                         .map(function (res) { return res.json(); });
                 };
+                RestaurantesService.prototype.addRestaurante = function (restaurante) {
+                    var json = JSON.stringify(restaurante);
+                    var params = "json=" + json;
+                    var header = new http_1.Headers({ "Content-Type": "application/x-www-form-urlencoded" });
+                    return this._http.post("http://localhost/restaurantes-api/api-rest/restaurantes-api.php/restaurantes", params, { headers: header }).map(function (res) { return res.json(); });
+                };
+                RestaurantesService.prototype.editRestaurante = function (id, restaurante) {
+                    var json = JSON.stringify(restaurante);
+                    var params = "json=" + json;
+                    var header = new http_1.Headers({ "Content-Type": "application/x-www-form-urlencoded" });
+                    return this._http.post("http://localhost/restaurantes-api/api-rest/restaurantes-api.php/update-restaurante/" + id, params, { headers: header }).map(function (res) { return res.json(); });
+                };
                 RestaurantesService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])

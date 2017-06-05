@@ -52,8 +52,6 @@ export class RestauranteDetailComponent implements OnInit {
 				if (this.errorMessage !== null) {
 					console.log(this.errorMessage);
 					alert("Error en la peticion");
-
-
 				}
 			}
 		);
